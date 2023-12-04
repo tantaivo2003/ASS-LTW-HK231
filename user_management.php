@@ -57,7 +57,7 @@
         echo '</tbody>';
         echo '</table>';
     } else {
-        echo 'No users found';
+        echo '<script>alert("No users found!")</script>';
     }
 
     // Close connection

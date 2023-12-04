@@ -119,10 +119,10 @@ if (isset($_GET['username'])) {
         </form>
         <?php
     } else {
-        echo '<p>Username not found</p>';
+        echo '<script>alert("Username not found!")</script>';
     }
 } else {
-    echo '<p>Invalid Username</p>';
+    echo '<script>alert("Invalid Username!")</script>';
 }
 
 // Close connection
