@@ -22,7 +22,7 @@ $type = $row['productType'];
 $img = $row['imageUrl'];
 
 if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
-    if ($_POST["submit"] == "Submit") {
+    if ($_POST["submit"] == "Xác nhận") {
         $name = $_POST["name"];
         $price = $_POST["price"];
         $des = $_POST["des"];
@@ -67,7 +67,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
-    if ($_POST["submit"] == "Clear") {
+    if ($_POST["submit"] == "Xóa thông tin đã nhập") {
         $name = "";
         $des = "";
         $price = "";

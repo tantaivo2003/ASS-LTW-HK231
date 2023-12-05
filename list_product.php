@@ -97,7 +97,8 @@ if ($conn->connect_error) {
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    echo
+                    if ($row['display'] == 1){
+                        echo
                         "<div class='col'>
                             <a href='detail_product.php?id=" . $row["productId"] . "'class='link-dark link-underline link-underline-opacity-0'>
                                 <div class='card text-center h-100' style='width:365px;'>
@@ -109,6 +110,7 @@ if ($conn->connect_error) {
                                 </div>
                             </a>
                         </div> ";
+                    }  
                 }
             }
             ?>

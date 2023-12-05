@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 
 $id = $_GET["id"];
 if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
-    if ($_POST["submit"] == "Delete") {
+    if ($_POST["submit"] == "Xóa") {
         $sql = "DELETE FROM sanpham WHERE productId = '$id'";
         if ($conn->query($sql) === TRUE) {
             echo '<script>alert("Đã xóa thành công!")</script>';

@@ -24,7 +24,8 @@ if ($conn->connect_error) {
 </head>
 
 <body style="background-color:black;">
-    <a class="btn mt-3" href="index_admin.php" style="background-color:#FF8C00; color:white; margin-left: 20px;">Quay lại</a>
+    <a class="btn mt-3" href="index_admin.php" style="background-color:#FF8C00; color:white; margin-left: 20px;">Quay
+        lại</a>
     <hr size="5px" color="#FF8C00">
     <div class="container">
         <h1 class="mt-1" style="color: white; text-align: center;">DANH SÁCH SẢN PHẨM</h1>
@@ -38,6 +39,7 @@ if ($conn->connect_error) {
                 <th scope="col">Mô tả</th>
                 <th scope="col">Giá</th>
                 <th scope="col">Hãng sản xuất</th>
+                <th scope="col">Hiển thị</th>
                 <th scope="col">Chức năng</th>
             </tr>
             <?php
@@ -47,17 +49,21 @@ if ($conn->connect_error) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo
-                        "<tr>
+                        "
+                        <tr>
                             <td>" . $row["productId"] . "</td>
                             <td class='col-2'>" . $row["name"] . "</td>
                             <td style='text-align:justify;'>" . $row["description"] . "</tdclass>
                             <td>" . $row["price"] . "$</td>
                             <td>" . $row["productType"] . "</td>
+                            <td>" . $row["display"] . "</td>
                             <td class='col-2'>
                                 <a href='detail_product.php?id=" . $row["productId"] . "' class='btn mt-3' style='background-color:#FF8C00; color:white;'>Xem chi tiết sản phẩm</a>
                                 <a href='edit_product.php?id=" . $row["productId"] . "' class='btn mt-4' style='background-color:#FF8C00; color:white;'>Chỉnh sửa</a>
-                                <a href='delete_product.php?id=" . $row["productId"] . "' class='btn btn-secondary mt-4 ms-4'>Xóa</a>
+                                <a href='delete_product.php?id=" . $row["productId"] . "' class='btn mt-4 ms-4' style='background-color:#FF8C00; color:white;'>Xóa</a>
+                                <a href='display_product.php?id=" . $row["productId"] . "' class='btn mt-4' style='background-color:#FF8C00; color:white;'>Ẩn / Hiện sản phẩm</a>
                             </td>
+                            
                         </tr>";
                 }
             }
@@ -70,4 +76,3 @@ if ($conn->connect_error) {
 </body>
 
 </html>
-

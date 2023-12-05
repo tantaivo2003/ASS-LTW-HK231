@@ -18,7 +18,7 @@ $address = $row['address'];
 $phone = $row['phone'];
 
 if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
-    if ($_POST["submit"] == "Submit") {
+    if ($_POST["submit"] == "Xác nhận") {
         $address = $_POST["address"];
         $phone = $_POST["phone"];
 
@@ -36,7 +36,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
-    if ($_POST["submit"] == "Clear") {
+    if ($_POST["submit"] == "Xóa thông tin đã nhập") {
         $address = "";
         $phone = "";
     }

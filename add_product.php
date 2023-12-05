@@ -10,12 +10,12 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$id = $img = $name = $price = $type = $des = "";
+$id = $img = $name = $price = $type = $des = $display = "";
 $sql = "SELECT * FROM sanpham";
 $result = $conn->query($sql);
 
 if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
-    if ($_POST["submit"] == "Create") {
+    if ($_POST["submit"] == "Tạo") {
         $id = isset($_POST['id']) ? $_POST['id'] : null;
         $name = $_POST["name"];
         $price = $_POST["price"];
@@ -70,7 +70,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
             if ($test == 0) {
-                $newsql = "INSERT INTO sanpham (productId, name, description, price, productType, imageUrl) VALUES ('$id', '$name', '$des', '$price', '$type', '$img')";
+                $newsql = "INSERT INTO sanpham (productId, name, description, price, productType, imageUrl, display) VALUES ('$id', '$name', '$des', '$price', '$type', '$img', 1)";
 
                 if ($conn->query($newsql) === TRUE) {
                     echo '<script>alert("Đã tạo thành công!")</script>';
@@ -80,7 +80,7 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
 
         }
     }
-    if ($_POST["submit"] == "Clear") {
+    if ($_POST["submit"] == "Xóa thông tin đã nhập") {
         $id = "";
         $name = "";
         $des = "";
