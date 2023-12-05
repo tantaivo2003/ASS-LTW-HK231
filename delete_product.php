@@ -36,12 +36,12 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body style="background-color:black;">
     <div class="container mt-3" style="width: 600px;">
-        <h1 class="mt-5" style="color: white; text-align: center;">ARE YOU SURE?</h1>
+        <h1 class="mt-5" style="color: white; text-align: center;">XÁC NHẬN XÓA SẢN PHẨM?</h1>
         <hr>
 
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?id=' . $id ?>">
-            <input type="submit" class="form-control btn mt-3" name="submit" value="Delete" style="background-color:#FF8C00; color:white;">
-            <a class="form-control btn btn-dark mt-3" href="product_admin.php">Cancel</a><br>
+            <input type="submit" class="form-control btn mt-3" name="submit" value="Xóa" style="background-color:#FF8C00; color:white;">
+            <a class="form-control btn btn-dark mt-3" href="product_admin.php">Hủy</a><br>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

@@ -24,21 +24,21 @@ if ($conn->connect_error) {
 </head>
 
 <body style="background-color:black;">
-    <a class="btn mt-3" href="index_admin.php" style="background-color:#FF8C00; color:white; margin-left: 20px;">Go Back</a>
+    <a class="btn mt-3" href="index_admin.php" style="background-color:#FF8C00; color:white; margin-left: 20px;">Quay lại</a>
     <hr size="5px" color="#FF8C00">
     <div class="container">
-        <h1 class="mt-1" style="color: white; text-align: center;">PRODUCTS LIST</h1>
+        <h1 class="mt-1" style="color: white; text-align: center;">DANH SÁCH SẢN PHẨM</h1>
         <hr>
-        <a class="btn mt-2" href="add_product.php" style="background-color:#FF8C00; color:white;">Create New Product</a>
+        <a class="btn mt-2" href="add_product.php" style="background-color:#FF8C00; color:white;">Tạo sản phẩm mới</a>
 
-        <table class="table table-bordered mt-3 table table-dark table-striped" style="text-align:justify;">
+        <table class="table table-bordered mt-3 table table-dark table-striped" style="text-align:center;">
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Price</th>
-                <th scope="col">Type</th>
-                <th scope="col">Action</th>
+                <th scope="col">Tên sản phẩm</th>
+                <th scope="col">Mô tả</th>
+                <th scope="col">Giá</th>
+                <th scope="col">Hãng sản xuất</th>
+                <th scope="col">Chức năng</th>
             </tr>
             <?php
             $sql = "SELECT * FROM sanpham";
@@ -49,13 +49,14 @@ if ($conn->connect_error) {
                     echo
                         "<tr>
                             <td>" . $row["productId"] . "</td>
-                            <td class='col-3'>" . $row["name"] . "</td>
-                            <td>" . $row["description"] . "</tdclass>
+                            <td class='col-2'>" . $row["name"] . "</td>
+                            <td style='text-align:justify;'>" . $row["description"] . "</tdclass>
                             <td>" . $row["price"] . "$</td>
                             <td>" . $row["productType"] . "</td>
                             <td class='col-2'>
-                                <a href='edit_product.php?id=" . $row["productId"] . "' class='btn' style='background-color:#FF8C00; color:white;'>Edit</a>
-                                <a href='delete_product.php?id=" . $row["productId"] . "' class='btn btn-secondary ms-3'>Delete</a>
+                                <a href='detail_product.php?id=" . $row["productId"] . "' class='btn mt-3' style='background-color:#FF8C00; color:white;'>Xem chi tiết sản phẩm</a>
+                                <a href='edit_product.php?id=" . $row["productId"] . "' class='btn mt-4' style='background-color:#FF8C00; color:white;'>Chỉnh sửa</a>
+                                <a href='delete_product.php?id=" . $row["productId"] . "' class='btn btn-secondary mt-4 ms-4'>Xóa</a>
                             </td>
                         </tr>";
                 }

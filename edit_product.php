@@ -92,29 +92,29 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body style="background-color:black;">
     <div class="container mt-3" style="width: 600px">
-        <h1 class="mt-5" style="color: white; text-align: center;">EDIT PRODUCT</h1>
+        <h1 class="mt-5" style="color: white; text-align: center;">CHỈNH SỬA SẢN PHẨM</h1>
         <hr>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?id=' . $id ?>">
-            <label class="mt-2" for="name" style="color:white;">Name</label>
+            <label class="mt-2" for="name" style="color:white;">Tên sản phẩm</label>
             <input type="text" class="form-control mt-3" name="name" value='<?php echo $name ?>'>
-            <label class="mt-2" for="des" style="color:white;">Description</label>
+            <label class="mt-2" for="des" style="color:white;">Mô tả</label>
             <input type="text" class="form-control mt-3" name="des" value='<?php echo $des ?>'>
-            <label class="mt-2" for="price" style="color:white;">Price</label>
+            <label class="mt-2" for="price" style="color:white;">Giá</label>
             <input type="text" class="form-control mt-3" name="price" value='<?php echo $price ?>'>
-            <label class="mt-2" for="type" style="color:white;">Product Type</label>
+            <label class="mt-2" for="type" style="color:white;">Hãng sản xuất</label>
             <input type="text" class="form-control mt-3" name="type" value='<?php echo $type ?>'>
-            <label class="mt-2" for="img" style="color:white;">Image URL</label>
+            <label class="mt-2" for="img" style="color:white;">Link hình ảnh</label>
             <input type="text" class="form-control mt-3" name="img" placeholder="Image" value='<?php echo $img ?>'>
 
             <div class="row">
                 <div class="col">
-                    <input type="submit" class="form-control btn mt-3" name="submit" value="Submit" style="background-color:#FF8C00; color:white;">
+                    <input type="submit" class="form-control btn mt-3" name="submit" value="Xác nhận" style="background-color:#FF8C00; color:white;">
                 </div>
                 <div class="col">
-                    <input type="submit" class="form-control btn btn-danger mt-3" name="submit" value="Clear">
+                    <input type="submit" class="form-control btn btn-danger mt-3" name="submit" value="Xóa thông tin đã nhập">
                 </div>
             </div>
-            <a class="form-control btn btn-secondary mt-3" href="product_admin.php">Cancel</a><br>
+            <a class="form-control btn btn-secondary mt-3" href="product_admin.php">Hủy</a><br>
 
         </form>
     </div>
