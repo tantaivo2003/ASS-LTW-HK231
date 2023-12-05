@@ -47,9 +47,9 @@
 
             // Action buttons
             echo '<td>';
-            echo '<a href="edit_user.php?username=' . $row['username'] . '" class="btn btn-primary btn-sm">Edit</a>';
+            echo '<a href="edit_user.php?username=' . $row['username'] . '" class="btn btn-primary btn-sm">Chi tiết</a>';
             echo ' ';
-            echo '<a href="delete_user.php?username=' . $row['username'] . '" class="btn btn-danger btn-sm">Delete</a>';
+            echo '<a href="delete_user.php?username=' . $row['username'] . '" class="btn btn-danger btn-sm">Xóa</a>';
             echo '</td>';
             echo '</tr>';
         }

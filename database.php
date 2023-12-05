@@ -5,7 +5,7 @@
 $DB_host = 'localhost';
 $DB_username = 'root';
 $DB_password = '';
-$DB_database = 'ltw_db'; 
+$DB_database = 'altw_db'; 
 
 $conn = new mysqli($DB_host, $DB_username, $DB_password, $DB_database);
 
