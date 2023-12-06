@@ -39,7 +39,7 @@ if (isset($_GET['orderId'])) {
     
     echo '<a class="btn mt-3" href="order_management.php?username=' . $row_total_order['orderUsername'] . '" style="background-color:#FF8C00; color:white; margin-left: 20px;">Go Back</a>';
     echo '<hr size="5px" color="#FF8C00">';
-    echo '<h2 class="mb-3">Đơn hàng ' . $orderId . '</h2>';
+    echo '<h2 class="mb-3">Đơn hàng #' . $orderId . '</h2>';
     echo '<p class="mb-3">Ngày đặt hàng:  ' . $row_total_order['orderDate'] . '</p>';
 
     ?>
