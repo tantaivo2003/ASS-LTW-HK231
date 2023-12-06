@@ -42,29 +42,22 @@ if (isset($_GET['username'])) {
     $stmt_user_info = $conn->prepare("SELECT * FROM khachhang WHERE username = ?");
     $stmt_user_info->bind_param("s", $username);
     $stmt_user_info->execute();
-    
     $user_info = $stmt_user_info->get_result();
 
     $stmt_user_total_orders = $conn->prepare("SELECT * FROM donhang WHERE orderUsername = ?");
     $stmt_user_total_orders->bind_param("s", $username);
     $stmt_user_total_orders->execute();
     $user_total_orders = $stmt_user_total_orders->get_result();
-
-    
-    
-    // $stmt_user_orders = $conn->prepare("SELECT * FROM donhang WHERE username = ?");
-    // $stmt_user_orders->bind_param("s", $username);
-    // $stmt_user_orders->execute();
-    // $user_orders = $stmt_user_orders->get_result();
-    
-
-    // user info
-    if ($user_info->num_rows > 0) {
-        $user = $user_info->fetch_assoc();
-
-        ?>
+    ?>
+        
         <div class="row">
             <div class="col-xs-12 col-md-6 mt-4">
+
+            <?php
+            // user info
+            if ($user_info->num_rows > 0) {
+                $user = $user_info->fetch_assoc();
+            ?>        
                 <h2 class="mb-3">Thông tin người dùng</h2>
                 <!-- Display form --> 
                 <form class="mt-3" action="<?php echo $_SERVER['PHP_SELF'] . '?username=' . $username; ?>" method="post">
@@ -128,56 +121,49 @@ if (isset($_GET['username'])) {
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- display user's orders-->
-                <div class="col-xs-12 col-md-6 mt-8">
-                    <h2 class="mb-3">Lịch sử đơn hàng</h2>
-                    <?php
-                    if ($user_total_orders->num_rows > 0) {
-                        echo '<table class="table table-bordered mt-3 table table-dark table-striped table-hover align-middle table-responsive" style="text-align:justify;">
-                                <thead>
-                                    <tr>
-                                        <th>Order Id</th>
-                                        <th>Order Date</th>
-                                        <th>Total Price</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>';
-                        
-                        while ($row_order = $user_total_orders->fetch_assoc()) {
-                            echo '<tr>';
-                            echo '<td><a href="order_info.php?orderId=' . $row_order['orderId'] . '">' . $row_order['orderId'] . '</a></td>';
-                            echo '<td>' . $row_order['orderDate'] . '</td>';
-                            echo '<td>' . $row_order['orderTotalPrice'] . '</td>';
-                            echo '<td>' . $row_order['status'] . '</td>';
-                            echo '</tr>';
-                        }
-                        
-                        echo '</tbody></table>';
-                    } else {
-                        echo '<p class="fw-bold">No orders found!</p>';
-                    }
-                    ?>
-
-                </div>
                 </form>
+            </div>        
+            <?php
+            } else {
+                echo '<script>alert("Username not found!")</script>';
+            }
+            ?>
+            <!-- display user's orders-->
+            <div class="col-xs-12 col-md-6 mt-4">
+                <h2 class="mb-3">Lịch sử đơn hàng</h2>
+                <?php
+                if ($user_total_orders->num_rows > 0) {
+                    echo '<table class="table table-bordered mt-3 table table-dark table-striped table-hover align-middle table-responsive" style="text-align:justify;">
+                            <thead>
+                                <tr>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Ngày đặt hàng</th>
+                                    <th>Tổng</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>';
+                    
+                    while ($row_order = $user_total_orders->fetch_assoc()) {
+                        echo '<tr>';
+                        echo '<td><a href="order_info.php?username=' . $username . '&orderId=' . $row_order['orderId'] . '">' . $row_order['orderId'] . '</a></td>';
+                        echo '<td>' . $row_order['orderDate'] . '</td>';
+                        echo '<td>' . $row_order['orderTotalPrice'] . '</td>';
+                        echo '<td>' . $row_order['status'] . '</td>';
+                        echo '</tr>';
+                    }
+                    
+                    echo '</tbody></table>';
+                } else {
+                    echo '<p class="fw-bold">No orders found!</p>';
+                }
+                ?>
+
             </div>
+
         </div>
-        <?php
-    } else {
-        echo '<script>alert("Username not found!")</script>';
-    }
-
-
-
-
-
-
-
-
-
-
+    <?php
+    
 } else {
     echo '<script>alert("Invalid Username!")</script>';
 }
