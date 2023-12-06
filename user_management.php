@@ -11,7 +11,7 @@
 
     if ($result->num_rows > 0) {
         // Display table
-        echo '<table class="table table-bordered mt-3 table table-dark table-striped table-hover align-middle table-responsive" style="text-align:justify;">';
+        echo '<table class="table table-bordered mt-3 table table-dark table-striped table-hover align-middle table-responsive w-auto mx-auto" style="text-align:justify;">';
         echo '<thead>';
         echo '<tr class="fit-content-row">';
         echo '<th scope="col">Tên đăng nhập</th>';

@@ -82,9 +82,9 @@ if (isset($_GET['username'])) {
                             <label for="sex" class="form-label">Giới tính:</label>
                             <select class="form-select" id="sex" name="sex" required>
                                 <option value="" disabled>Chọn giới tính</option>
-                                <option value="male" <?php echo ($user['sex'] == 'male') ? 'selected' : ''; ?>>Nam</option>
-                                <option value="female" <?php echo ($user['sex'] == 'female') ? 'selected' : ''; ?>>Nữ</option>
-                                <option value="other" <?php echo ($user['sex'] == 'other') ? 'selected' : ''; ?>>Khác</option>
+                                <option value="Male" <?php echo ($user['sex'] == 'Male') ? 'selected' : ''; ?>>Nam</option>
+                                <option value="Female" <?php echo ($user['sex'] == 'Female') ? 'selected' : ''; ?>>Nữ</option>
+                                <option value="Other" <?php echo ($user['sex'] == 'Other') ? 'selected' : ''; ?>>Khác</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -133,7 +133,7 @@ if (isset($_GET['username'])) {
                 <h2 class="mb-3">Lịch sử đơn hàng</h2>
                 <?php
                 if ($user_total_orders->num_rows > 0) {
-                    echo '<table class="table table-bordered mt-3 table table-dark table-striped table-hover align-middle table-responsive" style="text-align:justify;">
+                    echo '<table class="table table-bordered mt-3 table table-dark table-striped table-hover align-middle table-responsive w-auto" style="text-align:justify;">
                             <thead>
                                 <tr>
                                     <th>Mã đơn hàng</th>
@@ -146,7 +146,7 @@ if (isset($_GET['username'])) {
                     
                     while ($row_order = $user_total_orders->fetch_assoc()) {
                         echo '<tr>';
-                        echo '<td><a href="order_info.php?username=' . $username . '&orderId=' . $row_order['orderId'] . '">' . $row_order['orderId'] . '</a></td>';
+                        echo '<td><a href="order_info.php?orderId=' . $row_order['orderId'] . '">' . $row_order['orderId'] . '</a></td>';
                         echo '<td>' . $row_order['orderDate'] . '</td>';
                         echo '<td>' . $row_order['orderTotalPrice'] . '</td>';
                         echo '<td>' . $row_order['status'] . '</td>';
