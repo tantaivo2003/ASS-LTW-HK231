@@ -1,56 +1,39 @@
 <?php
-if (isset($_POST["submitButton"])) {
-    $error = "";
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $checkRemember = isset($_POST["remember"]) ? $_POST["remember"] : 0;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $checkRemember = isset($_POST["rememberMe"]) ? $_POST["rememberMe"] : 0;
 
-    if (strlen($username) < 2 || strlen($username) > 30) {
-        $error .= "Tên đăng nhập phải từ 2 đến 30 kí tự.\n";
-    }
-
-    if (strlen($password) < 6) {
-        $error .= "Mật khẩu phải chứa ít nhất 6 kí tự.\n";
-    }
-
-    if (empty($error)) {
+    if (empty($username) || empty($password)) {
+        echo '<script>alert("Vui lòng nhập đầy đủ thông tin")</script>';
+    } else {
         $conn = mysqli_connect("localhost", "root", "", "ltw_db");
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        $sql = "SELECT * FROM KhachHang WHERE username = '$username'";
-        $result = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($result) == 1) {
-            $row = mysqli_fetch_assoc($result);
-            if (password_verify($password, $row["password"])) {
-/*              session_start();
-                $_SESSION["username"] = $username;
-                $_SESSION["remember"] = $checkRemember;
-
-                if ($checkRemember) {
-                    setcookie("username", $username, time() + 3600);
-                    setcookie("remember", $checkRemember, time() + 3600);
-                } 
-                header("Location: mainPage.php");
-                exit(); */
-                $error .= "Đăng nhập thành công.\n";
-            } 
-            else {
-                $error .= "Tên đăng nhập hoặc mật khẩu không đúng.\n";
-            }
-        } 
-        else {
-            $error .= "Tên đăng nhập hoặc mật khẩu không đúng.\n";
-        }
+        $rows = mysqli_query($conn,"
+				select * from khachhang where username = '$username' and password = '$password'
+			");
+			$count = mysqli_num_rows($rows);
+			if($count==1){
+                session_start();
+                $_SESSION['username'] = $username;
+                if($checkRemember){
+                    setcookie("username", $username, time() + (86400 * 30), "/");
+                    setcookie("password", $password, time() + (86400 * 30), "/");
+                }
+				header("location:hello.php");
+                exit();
+			}
+			else{
+                echo '<script>alert("Sai tên người dùng hoặc mật khẩu.")</script>';
+			}
         mysqli_close($conn);
-    }
-    if (!empty($error)) {
-        echo "<script>alert('$error');</script>";
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,218 +64,27 @@ if (isset($_POST["submitButton"])) {
             width: 100%;   
             padding: 0px;
         }
-
-        .container{
-            margin-top: 120px;
-            margin-bottom: 120px;
-            width: 60%;
-        }
-        .loginForm{
-            width: 50%;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #000;
-            border-radius: 10px;
-        }
-        .loginForm h2{
-            text-align: center;
-            margin-bottom: 20px;
-            margin-top: 40px;
-        }
-        .loginForm label{
-            font-weight: 500;
-        }
-        .loginForm .formFlex{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .loginForm button{
-            width: 100%;
-            margin-top: 20px;
-            border-radius: 10px;
-        }
-        hr{
-            border: 1px solid #000;
-            margin: 0px;
-        }
-        input{
-            border: 0px;
-        }
-        a{
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-        }
-        .loginForm .btn{
-            height: 50px;
-            margin-bottom: 40px;
-        }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <div class="container-fluid bg-black pageHeader">
-        <nav class="navbar navbar-expand-lg navbar-black bg-black">
-            <a class="navbar-brand" href="#">
-                <img src="images/logo.png" alt="TimeElite" class="img-responsive" width="100" height="100">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#" style="color: #FF8C00">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: #FF8C00">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: #FF8C00">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: #FF8C00">Contact</a>
-                    </li>
-                </ul>
-                
-                <ul class="navbar-nav ms-auto">
-                    <form class="d-flex" style="padding-left: 30px; padding-right: 30px">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: yellow">
-                            <img src="images/cart.jpg" alt="" width="30" height="30">
-                            <i class="bi bi-cart"></i>Giỏ hàng
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: yellowgreen">Log in</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: yellowgreen">Sign up</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <div class = "container">
-        <div class = "loginForm">
-            <h2>ĐĂNG NHẬP</h2>
-            <form action = "" method  = "POST">
-                <div class="form-floating mb-3">
-                    <input name = "username" type="text" class="form-control" id="floatingUsername" placeholder="name@example.com">
-                    <label for="floatingUsername">Tên đăng nhập</label>
-                </div>
-                <div class="form-floating">
-                    <input name = "password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Mật khẩu</label>
-                </div>
-                <div class = formFlex>
-                    <div class = "rememberCheckbox">
-                        <input type="checkbox" id="remember" name="remember" value="1">
-                        <label for="remember">Ghi nhớ đăng nhập</label>
-                    </div>
-                    <div class = "registerButton">
-                        <a href = "register.php">Chưa có tài khoản? Đăng ký</a>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-dark" onclick = "validateChecker()">Đăng nhập</button>
-                <button style = "display:none;" type="submit" class="btn btn-dark" id = "submitButton" name = "submitButton">Đăng nhập</button>
-            </form>
+    <div class="container bg-light mt-3" style="width: 400px; margin-top: 100px; margin-bottom: 100px">
+        <div class="row">
+            <h3 class="fw-bold text-center mt-2">Đăng nhập</h3>
         </div>
-    </div>
-    <div class = "pageFooter">
-        <div class="container-fluid bg-black">
-            <div class="row">
-                <div class="col-lg-6 col-sm-6 col-xs-12">
-                    <div class="ft-dm" style="color: gray">Liên Hệ</div>
-                    <div class="ft-address">
-                        <span style="font-size: 20px">
-                            <strong style="color: gray">TIME ELITE</strong>
-                        </span>
-                        <br>
-                        <span style="font-size: 14px">
-                            <span style="color: #696969">Địa chỉ:</span>
-                            <span style="color: #FF8C00">Showroom: 268 Lý Thường Kiệt, Q.10, Thành phố Hồ Chí Minh</span>
-                        </span>
-                        <br>
-                        <span style="font-size: 14px">
-                            <span style="color: #696969">Email:</span>
-                            <span style="color: #FF8C00">TimeElite@gmail.com</span>
-                            <br>
-                            <span style="color: #696969">Hotline tư vấn bán hàng:</span>
-                            <span style="color: #FF8C00">0948315737</span>
-                            <br>
-                            <span style="color: #696969">Facebook:</span>
-                            <span style="color: #FF8C00">www.facebook.com/TimeElite.vn</span>
-                            <br>
-                            <span style="color: #696969">Instagram:</span>
-                            <span style="color: #FF8C00">@TimeElite</span>
-                            <br>
-                        </span>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-sm-6 col-xs-12">
-                    <span style="font-size: 18px">
-                        <strong style="color: gray">DÀNH CHO NGƯỜI DÙNG</strong>
-                    </span>
-                    <br>
-                    <span style="color: #FF8C00">Chính sách thanh toán</span>
-                    <br>
-                    <span style="color: #FF8C00">Chính sách vận chuyển</span>
-                    <br>
-                    <span style="color: #FF8C00">Chính sách đổi trả</span>
-                    <br>
-                    <span style="color: #FF8C00">Chính sách bảo hành sản phẩm</span>
-                    <br>
-                    <span style="color: #FF8C00">Chính sách kiểm hàng</span>
-                    <br>
-                    <span style="color: #FF8C00">Chính sách bảo mật thông tin</span>
-                    <br>
-                </div>
+        <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+            <input type="text" class="form-control mt-3" id="username" name="username" placeholder="Tên đăng nhập">
+            <input type="password" class="form-control mt-3" id="password" name="password" placeholder="Mật khẩu">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="rememberMe" id="rememberMe">
+                <label class="form-check-label" for="remember">Ghi nhớ đăng nhập</label>
             </div>
-        </div>
-        <div class="footer_info">
-            <div class="row">
-                <div class="col-sm-4">
-                    <img src="images/thanhtoan.jpg" alt="TimeElite">
-                </div>
-                <div class="col-sm-4">
-                    <img src="images/connect.jpg" alt="TimeElite" width="300" height="150">
-                </div>
-                <div class="col-sm-4">
-                    <img src="images/dangky.jpg" alt="TimeElite">
-                </div>
+            <div class="form-text" style="color: #FF8C00;">Chưa có tài khoản? <a href="register.php" style="color: #FF8C00;">Đăng ký</a></div>
+            <div class="text-center">
+                <input type="submit" class="btn btn-outline-primary mt-3" name="submit" value="Đăng nhập">
             </div>
-        </div>
+        </form>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <script>
-        function validateChecker(){
-            var username = document.getElementById('floatingUsername').value;
-            var password = document.getElementById('floatingPassword').value;
-
-            var errorMessage = '';
-
-            if (username.length < 2 || username.length > 30) {
-                errorMessage += 'Tên đăng nhập phải từ 2 đến 30 kí tự.\n';
-            }
-
-            if (password.length < 6) {
-                errorMessage += 'Mật khẩu phải chứa ít nhất 6 kí tự.\n';
-            }
-
-            if (errorMessage != '') {
-                alert(errorMessage);
-            }
-            else{
-                document.getElementById('submitButton').click();
-            }
-        }
-    </script>
 </body>
 </html>
