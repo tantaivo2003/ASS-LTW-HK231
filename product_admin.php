@@ -53,7 +53,7 @@ if ($conn->connect_error) {
                         <tr>
                             <td>" . $row["productId"] . "</td>
                             <td class='col-2'>" . $row["name"] . "</td>
-                            <td style='text-align:justify;'>" . $row["description"] . "</tdclass>
+                            <td style='text-align:justify;'>" . $row["description"] . "</td>
                             <td>" . $row["price"] . "$</td>
                             <td>" . $row["productType"] . "</td>
                             <td>" . $row["display"] . "</td>

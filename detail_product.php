@@ -28,6 +28,9 @@ if ($conn->connect_error) {
             padding-left: 15px;
             padding-right: 15px;
         }
+        .nav-item:hover .dropdown-menu {
+            display: block;
+        }
     </style>
 </head>
 
@@ -36,53 +39,57 @@ if ($conn->connect_error) {
     <div class="container-fluid bg-black">
         <nav class="navbar navbar-expand-lg navbar-black bg-black">
             <a class="navbar-brand" href="#">
-                <img src="images/logo.png" alt="TimeElite" class="img-responsive" width="80" height="80">
+                <img src="images/logo.png" alt="TimeElite" class="img-responsive" width="70" height="70">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#" style="color: #FF8C00">
-                            <h4>HOME</h4>
-                        </a>
+                        <a class="nav-link" href="#" style="color: #FF8C00">Trang chủ</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: #FF8C00">
-                            <h4>ABOUT</h4>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" style="color: #FF8C00">
+                            Hãng
                         </a>
+                        <ul class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#" style="color: #FF8C00">Audemars Piguet</a></li>
+                            <li><a class="dropdown-item" href="#" style="color: #FF8C00">Patek Philippe</a></li>
+                            <li><a class="dropdown-item" href="#" style="color: #FF8C00">Vacheron Constantin</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: #FF8C00">
-                            <h4>SERVICES</h4>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" style="color: #FF8C00">
+                            Dịch vụ
                         </a>
+                        <ul class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#" style="color: #FF8C00">Sửa chữa đồng hồ</a></li>
+                            <li><a class="dropdown-item" href="#" style="color: #FF8C00">Bảo hành đồng hồ</a></li>
+                            <li><a class="dropdown-item" href="#" style="color: #FF8C00">In logo lên đồng hồ</a></li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: #FF8C00">
-                            <h4>CONTACT</h4>
-                        </a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" style="color: #FF8C00">Liên hệ</a>
                     </li>
                 </ul>
 
                 <ul class="navbar-nav ms-auto">
-                    <form class="d-flex" style="padding-left: 50px; padding-right: 50px">
+                    <form class="d-flex" style="padding-left: 30px; padding-right: 30px">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit"
                             style="background-color: #FF8C00; color: white">Search</button>
                     </form>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: #FF8C00">
+                        <a class="nav-link" href="#" style="color: yellow">
                             <img src="images/cart.jpg" alt="" width="30" height="30">
                             <i class="bi bi-cart"></i>Giỏ hàng
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: #FF8C00">Log in</a>
+                        <a class="nav-link" href="#" style="color: yellowgreen">Đăng nhập</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: #FF8C00">Sign up</a>
+                        <a class="nav-link" href="#" style="color: yellowgreen">Đăng kí</a>
                     </li>
                 </ul>
             </div>
