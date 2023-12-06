@@ -117,14 +117,8 @@
                             </ul>
                         </li>
                     <?php else: ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: yellowgreen">
-                          Đăng nhập
-                        </a>
-                        <ul class="dropdown-menu bg-black" aria-labelledby="navbarDropdown">
-                          <li><a class="dropdown-item" href="#" style="color: #FF8C00">Thành viên</a></li>
-                          <li><a class="dropdown-item" href="#" style="color: #FF8C00">Quản trị viên</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: yellowgreen">Đăng nhập</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" style="color: yellowgreen">Đăng kí</a>
