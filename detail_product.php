@@ -51,7 +51,7 @@ if ($conn->connect_error) {
                             data-bs-toggle="dropdown" aria-expanded="false" style="color: #FF8C00">
                             Hãng
                         </a>
-                        <ul class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#" style="color: #FF8C00">Audemars Piguet</a></li>
                             <li><a class="dropdown-item" href="#" style="color: #FF8C00">Patek Philippe</a></li>
                             <li><a class="dropdown-item" href="#" style="color: #FF8C00">Vacheron Constantin</a></li>
@@ -62,7 +62,7 @@ if ($conn->connect_error) {
                             data-bs-toggle="dropdown" aria-expanded="false" style="color: #FF8C00">
                             Dịch vụ
                         </a>
-                        <ul class="dropdown-menu bg-light" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#" style="color: #FF8C00">Sửa chữa đồng hồ</a></li>
                             <li><a class="dropdown-item" href="#" style="color: #FF8C00">Bảo hành đồng hồ</a></li>
                             <li><a class="dropdown-item" href="#" style="color: #FF8C00">In logo lên đồng hồ</a></li>
