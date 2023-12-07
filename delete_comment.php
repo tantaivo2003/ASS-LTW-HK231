@@ -35,9 +35,9 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body style="background-color:black;">
+<body style="background-color:white;">
     <div class="container mt-3" style="width: 600px;">
-        <h1 class="mt-5" style="color: white; text-align: center;">XÁC NHẬN XÓA BÌNH LUẬN?</h1>
+        <h1 class="mt-5" style="text-align: center;">XÁC NHẬN XÓA BÌNH LUẬN?</h1>
         <hr>
 
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?id=' . $id .'&uid=' . $uid ?>">

@@ -23,16 +23,16 @@ if ($conn->connect_error) {
     <title>Time Elite</title>
 </head>
 
-<body style="background-color:black;">
-    <div class="container">
+<body style="background-color:#eee;">
+    <div class="container" style="background-color:white;">
         <a class="btn mt-3" href="admin_page.php" style="background-color:#FF8C00; color:white; margin-left: 20px;">Quay
             lại</a>
         <hr size="5px" color="#FF8C00">
-        <h1 class="mt-1" style="color: white; text-align: center;">DANH SÁCH SẢN PHẨM</h1>
+        <h1 class="mt-1" style="text-align: center;">DANH SÁCH SẢN PHẨM</h1>
         <hr>
         <a class="btn mt-2" href="add_product.php" style="background-color:#FF8C00; color:white;">Tạo sản phẩm mới</a>
 
-        <table class="table table-bordered mt-3 table table-dark table-striped" style="text-align:center;">
+        <table class="table table-bordered mt-3 table table-striped" style="text-align:center;">
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Tên sản phẩm</th>
@@ -58,8 +58,8 @@ if ($conn->connect_error) {
                             <td>" . $row["productType"] . "</td>
                             <td>" . $row["display"] . "</td>
                             <td class='col-2'>
-                                <a href='edit_product.php?id=" . $row["productId"] . "' class='btn mt-4' style='background-color:#FF8C00; color:white;'>Chỉnh sửa</a>
-                                <a href='delete_product.php?id=" . $row["productId"] . "' class='btn mt-4 ms-4' style='background-color:#FF8C00; color:white;'>Xóa</a>
+                                <a href='edit_product.php?id=" . $row["productId"] . "' class='btn mt-2' style='background-color:#FF8C00; color:white;'>Chỉnh sửa</a>
+                                <a href='delete_product.php?id=" . $row["productId"] . "' class='btn mt-2 ms-4' style='background-color:#FF8C00; color:white;'>Xóa</a>
                                 <a href='display_product.php?id=" . $row["productId"] . "' class='btn mt-4' style='background-color:#FF8C00; color:white;'>Ẩn / Hiện sản phẩm</a>
                             </td>
                             
