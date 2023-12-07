@@ -34,14 +34,14 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body style="background-color:black;">
+<body style="background-color:white;">
     <div class="container mt-3" style="width: 600px;">
-        <h1 class="mt-5" style="color: white; text-align: center;">XÁC NHẬN XÓA SẢN PHẨM?</h1>
-        <hr>
+        <h1 class="mt-5" style="text-align: center;">XÁC NHẬN XÓA SẢN PHẨM?</h1>
+        <hr size="5px" color="#FF8C00">
 
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . '?id=' . $id ?>">
             <input type="submit" class="form-control btn mt-3" name="submit" value="Xóa" style="background-color:#FF8C00; color:white;">
-            <a class="form-control btn btn-dark mt-3" href="product_admin.php">Hủy</a><br>
+            <a class="form-control btn btn-secondary mt-3" href="product_admin.php">Hủy</a><br>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

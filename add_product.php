@@ -103,23 +103,23 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
-<body style="background-color:black;">
+<body style="background-color:white">
     <div class="container mt-3" style="width: 600px">
-        <h1 class="mt-5" style="color: white; text-align: center;">THÊM SẢN PHẨM MỚI</h1>
-        <hr>
+        <h1 class="mt-5" style="text-align: center;">THÊM SẢN PHẨM MỚI</h1>
+        <hr size="5px" color="#FF8C00">
 
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
-            <label class="mt-2" for="id" style="color:white;">ID</label>
+            <label class="mt-2" for="id">ID</label>
             <input type="text" class="form-control mt-3" name="id" value='<?php echo $id ?>'>
-            <label class="mt-2" for="name" style="color:white;">Tên sản phẩm</label>
+            <label class="mt-2" for="name">Tên sản phẩm</label>
             <input type="text" class="form-control mt-3" name="name" value='<?php echo $name ?>'>
-            <label class="mt-2" for="des" style="color:white;">Mô tả</label>
+            <label class="mt-2" for="des">Mô tả</label>
             <input type="text" class="form-control mt-3" name="des" value='<?php echo $des ?>'>
-            <label class="mt-2" for="price" style="color:white;">Giá</label>
+            <label class="mt-2" for="price">Giá</label>
             <input type="text" class="form-control mt-3" name="price" value='<?php echo $price ?>'>
-            <label class="mt-2" for="type" style="color:white;">Hãng sản xuất</label>
+            <label class="mt-2" for="type">Hãng sản xuất</label>
             <input type="text" class="form-control mt-3" name="type" value='<?php echo $type ?>'>
-            <label class="mt-2" for="img" style="color:white;">Link hình ảnh</label>
+            <label class="mt-2" for="img">Link hình ảnh</label>
             <input type="text" class="form-control mt-3" name="img" value='<?php echo $img ?>'>
 
             <div class="row">

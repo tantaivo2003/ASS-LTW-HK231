@@ -23,16 +23,16 @@ if ($conn->connect_error) {
     <title>Time Elite</title>
 </head>
 
-<body style="background-color:black;">
-    <div class="container">
+<body style="background-color:#eee;">
+    <div class="container" style="background-color:white;">
         <a class="btn mt-3" href="admin_page.php"
             style="background-color:#FF8C00; color:white; margin-left: 20px;">Quay
             lại</a>
         <hr size="5px" color="#FF8C00">
-        <h1 class="mt-1" style="color: white; text-align: center;">BÌNH LUẬN CỦA KHÁCH HÀNG</h1>
+        <h1 class="mt-1" style="text-align: center;">BÌNH LUẬN CỦA KHÁCH HÀNG</h1>
         <hr>
 
-        <table class="table table-bordered mt-3 table table-dark table-striped" style="text-align:center;">
+        <table class="table table-bordered mt-3 table table-striped" style="text-align:center;">
             <tr>
                 <th scope="col">Tên khách hàng</th>
                 <th scope="col">ID sản phẩm</th>
