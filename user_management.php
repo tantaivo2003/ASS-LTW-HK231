@@ -1,7 +1,7 @@
 <?php
     include('header.php');
 ?>
-<a class="btn mt-3" href="admin_page.php" style="background-color:#FF8C00; color:white; margin-left: 20px;">Go Back</a>
+<a class="btn mt-3" href="admin_page.php" style="background-color:#FF8C00; color:white; margin-left: 20px;">Quay lại</a>
 <hr size="5px" color="#FF8C00">
 <?php
     include("database.php");
@@ -11,7 +11,7 @@
 
     if ($result->num_rows > 0) {
         // Display table
-        echo '<table class="table table-bordered mt-3 table table-dark table-striped table-hover align-middle table-responsive w-auto mx-auto" style="text-align:justify;">';
+        echo '<table class="table table-bordered mt-3 table table-striped table-hover align-middle table-responsive w-auto mx-auto" style="text-align:justify;">';
         echo '<thead>';
         echo '<tr class="fit-content-row">';
         echo '<th scope="col">Tên đăng nhập</th>';

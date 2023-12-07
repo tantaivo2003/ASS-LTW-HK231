@@ -10,6 +10,6 @@
 
 
 </head>
-<body style="background-color:black; color:white">
-<div class="container mt-2">
+<body style="background-color:light">
+<div class="container mt-2 bg-white">
 

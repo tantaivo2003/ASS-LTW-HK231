@@ -37,7 +37,8 @@ if (isset($_GET['orderId'])) {
     
     $row_total_order = $user_total_orders->fetch_assoc();
     
-    echo '<a class="btn mt-3" href="order_management.php?username=' . $row_total_order['orderUsername'] . '" style="background-color:#FF8C00; color:white; margin-left: 20px;">Go Back</a>';
+    echo '<button class="btn mt-3" style="background-color:#FF8C00; color:white; margin-left: 20px;" onclick="goBack()">Quay lại</button>';
+
     echo '<hr size="5px" color="#FF8C00">';
     echo '<h2 class="mb-3">Đơn hàng #' . $orderId . '</h2>';
     echo '<p class="mb-3">Ngày đặt hàng:  ' . $row_total_order['orderDate'] . '</p>';
@@ -83,7 +84,7 @@ if (isset($_GET['orderId'])) {
     <?php
     // user info
     if ($order_info->num_rows > 0) {
-        echo '<table class="table table-bordered mt-3 table table-dark table-striped table-hover align-middle table-responsive w-auto" style="text-align:justify;">
+        echo '<table class="table table-bordered mt-3 table table-striped table-hover align-middle table-responsive w-auto" style="text-align:justify;">
                 <thead>
                     <tr>
                         <th>Sản phẩm</th>
@@ -114,7 +115,7 @@ if (isset($_GET['orderId'])) {
         // Display the total row
         echo '<tr>';
         echo '<td colspan="4"><strong>Tổng cộng:</strong></td>';
-        echo '<td><strong>' . $row_total_order['orderTotalPrice'] . '</strong></td>';
+        echo '<td><strong>$ ' . $row_total_order['orderTotalPrice'] . '</strong></td>';
         echo '</tr>';
         echo '</tbody></table>';
     } else {
@@ -125,3 +126,10 @@ if (isset($_GET['orderId'])) {
     echo '<script>alert("Invalid Order ID!")</script>';
 }
 ?>
+
+
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>

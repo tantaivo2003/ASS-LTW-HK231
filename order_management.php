@@ -1,7 +1,7 @@
 <?php
     include('header.php');
 ?>
-<a class="btn mt-3" href="admin_page.php" style="background-color:#FF8C00; color:white; margin-left: 20px;">Go Back</a>
+<a class="btn mt-3" href="admin_page.php" style="background-color:#FF8C00; color:white; margin-left: 20px;">Quay lại</a>
 <hr size="5px" color="#FF8C00">
 <?php
     include("database.php");
@@ -12,12 +12,12 @@
     $result = $stmt->get_result();
     ?>
 
-    <h1 class="mt-1" style="color: white; text-align: center;">Danh sách đơn hàng</h1>
+    <h1 class="mt-1" style="text-align: center;">Danh sách đơn hàng</h1>
     <hr>
 
     <?php
     if ($result->num_rows > 0) {
-        echo '<table class="table table-bordered mt-3 table table-dark table-striped table-hover align-middle table-responsive w-auto mx-auto" style="text-align:justify;">
+        echo '<table class="table table-bordered mt-3 table table-striped table-hover align-middle table-responsive w-auto mx-auto" style="text-align:justify;">
                 <thead>
                     <tr>
                         <th>Order ID</th>
@@ -34,7 +34,7 @@
             echo '<tr>';
             echo '<td>' . $row['orderId'] . '</td>';
             echo '<td>' . $row['orderUsername'] . '</td>';
-            echo '<td>' . $row['orderTotalPrice'] . '</td>';
+            echo '<td>$ ' . $row['orderTotalPrice'] . '</td>';
             echo '<td>' . $row['orderDate'] . '</td>';
             echo '<td>' . $row['status'] . '</td>';
             echo '<td>';

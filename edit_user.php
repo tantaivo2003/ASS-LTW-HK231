@@ -1,7 +1,7 @@
 <?php
     include("header.php");
 ?>
-<a class="btn mt-3" href="user_management.php" style="background-color:#FF8C00; color:white; margin-left: 20px;">Go Back</a>
+<a class="btn mt-3" href="user_management.php" style="background-color:#FF8C00; color:white; margin-left: 20px;">Quay lại</a>
 <hr size="5px" color="#FF8C00">
 
 <?php
@@ -130,7 +130,7 @@ if (isset($_GET['username'])) {
                 <h2 class="mb-3">Lịch sử đơn hàng</h2>
                 <?php
                 if ($user_total_orders->num_rows > 0) {
-                    echo '<table class="table table-bordered mt-3 table table-dark table-striped table-hover align-middle table-responsive w-auto" style="text-align:justify;">
+                    echo '<table class="table table-bordered mt-3 table table-striped table-hover align-middle table-responsive w-auto" style="text-align:justify;">
                             <thead>
                                 <tr>
                                     <th>Mã đơn hàng</th>
@@ -145,7 +145,7 @@ if (isset($_GET['username'])) {
                         echo '<tr>';
                         echo '<td><a href="order_info.php?orderId=' . $row_order['orderId'] . '">' . $row_order['orderId'] . '</a></td>';
                         echo '<td>' . $row_order['orderDate'] . '</td>';
-                        echo '<td>' ."$" . $row_order['orderTotalPrice'] . '</td>';
+                        echo '<td>$ ' . $row_order['orderTotalPrice'] . '</td>';
                         echo '<td>' . $row_order['status'] . '</td>';
                         echo '</tr>';
                     }

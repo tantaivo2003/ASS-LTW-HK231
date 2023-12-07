@@ -1,14 +1,14 @@
 <?php
     include("header.php");
 ?>
-<a class="btn mt-3" href="index_admin.php" style="background-color:#FF8C00; color:white; margin-left: 20px;">Go Back</a>
+<a class="btn mt-3" href="index_admin.php" style="background-color:#FF8C00; color:white; margin-left: 20px;">Quay lại</a>
 <hr size="5px" color="#FF8C00">
 <div class="container mt-3">
     <div class="body">
-        <h1 class="mt-1" style="color: white; text-align: center;">Quản lí</h1>
+        <h1 class="mt-1" style="text-align: center;">Quản lí</h1>
         <hr>
         <div class="row">
-            <div class="col-xs-12 col-md-6 col-xl-3">
+            <div class="col-xs-12 col-md-6 col-xl-3 mx-auto">
                 <div class="d-grid gap-1">
                 <button type="button" class="btn btn-block mt-3" style="background-color:#FF8C00; color:white;" id="user-mnm">Quản lí thông tin thành viên</button>
                 <button type="button" class="btn btn-block mt-3" style="background-color:#FF8C00; color:white;" id="order-mnm">Quản lí đơn hàng</button>
