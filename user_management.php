@@ -1,7 +1,6 @@
 <?php
     include('header.php');
 ?>
-
 <a class="btn mt-3" href="admin_page.php" style="background-color:#FF8C00; color:white; margin-left: 20px;">Quay lại</a>
 <hr size="5px" color="#FF8C00">
 <h1 class="mt-1" style="text-align: center;">Quản lí thành viên</h1>
@@ -15,7 +14,7 @@
 
     if ($result->num_rows > 0) {
         // Display table
-        echo '<table class="table table-bordered mt-3 table table-striped table-hover align-middle table-responsive w-auto mx-auto" style="text-align:justify;">';
+        echo '<table class="table table-bordered table-striped table-hover align-middle table-responsive w-auto mx-auto my-3"">';
         echo '<thead>';
         echo '<tr class="fit-content-row">';
         echo '<th scope="col">Tên đăng nhập</th>';
@@ -42,7 +41,7 @@
             echo '<td>'. $row['sex'] . '</td>';
             echo '<td>'. $row['address'] . '</td>';
             echo '<td>' . $row['dateOfBirth'] . '</td>';
-            echo '<td>' . $row['avatar'] . '</td>';
+            echo '<td><a href="' . $row['avatar'] . '"> link </a></td>';
             //echo '<td>'. $row['isbanned'] . '</td>';
             $isBannedValue = $row['isbanned'];
             echo '<td><input class="form-check-input mt-0" type="checkbox" ' . ($isBannedValue == 1 ? 'checked' : '') . ' disabled></td>';
@@ -76,7 +75,6 @@
         }
     }
 </script>
-
 <?php
     include('footer.php');
 ?>

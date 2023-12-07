@@ -36,8 +36,9 @@ if (isset($_GET['orderId'])) {
     $row_total_order = $user_total_orders->fetch_assoc();
     
     echo '<button class="btn mt-3" style="background-color:#FF8C00; color:white; margin-left: 20px;" onclick="goBack()">Quay lại</button>';
-
     echo '<hr size="5px" color="#FF8C00">';
+
+    echo '<div class="px-3">';
     echo '<h2 class="mb-3">Đơn hàng #' . $orderId . '</h2>';
     echo '<p class="mb-3">Ngày đặt hàng:  ' . $row_total_order['orderDate'] . '</p>';
 
@@ -84,7 +85,7 @@ if (isset($_GET['orderId'])) {
         echo '<br>';
         echo '<strong>Chi tiết đơn hàng:</strong>';
         echo '<br>';
-        echo '<table class="table table-bordered mt-3 table table-striped table-hover align-middle table-responsive w-auto" style="text-align:justify;">
+        echo '<table class="table table-bordered mt-3 table table-striped table-hover align-middle table-responsive w-auto">
                 <thead>
                     <tr>
                         <th>Tên sản phẩm</th>
@@ -125,6 +126,8 @@ if (isset($_GET['orderId'])) {
 } else {
     echo '<script>alert("Invalid Order ID!")</script>';
 }
+
+include("footer.php");
 ?>
 
 <script>

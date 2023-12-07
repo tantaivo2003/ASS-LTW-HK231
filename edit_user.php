@@ -46,78 +46,77 @@ if (isset($_GET['username'])) {
     $stmt_user_total_orders->bind_param("s", $username);
     $stmt_user_total_orders->execute();
     $user_total_orders = $stmt_user_total_orders->get_result();
+
+    // user info
+    if ($user_info->num_rows > 0) {
+        $user = $user_info->fetch_assoc();
     ?>
         
     <div class="row">
-        <div class="col-xs-12 col-md-6 mt-3">
-
-            <?php
-            // user info
-            if ($user_info->num_rows > 0) {
-                $user = $user_info->fetch_assoc();
-            ?>    
-
-            <h2 class="mb-3">Thông tin người dùng</h2>
-            <!-- Display form --> 
-            <form class="mt-3" action="<?php echo $_SERVER['PHP_SELF'] . '?username=' . $username;?>" method="post">
-                <div class="col-xs-12 col-md-9 col-xl-8">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Tên đăng nhập:</label>                            
-                        <input type="hidden" class="form-control" id="username" name="username" value="<?php echo $user['username'];?>">
-                        <input type="text" class="form-control" value="<?php echo $user['username'];?>" disabled>
-                    </div>    
-                    <div class="mb-3">
-                        <label for="fullname" class="form-label">Họ và tên:</label>
-                        <input type="text" class="form-control" id="fullname" name="fullname" value="<?php echo $user['fullname'];?>" >
-                    </div>
-                    <div class="mb-3">
-                        <label for="phoneNumber" class="form-label">Số điện thoại:</label>
-                        <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" value="<?php echo $user['phoneNumber'];?>" >
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email:</label>
-                        <input type="email" class="form-control" id="email" name="email" value="<?php echo $user['email'];?>" >
-                    </div>
-                    <div class="mb-3">
-                        <label for="sex" class="form-label">Giới tính:</label>
-                        <select class="form-select" id="sex" name="sex" required>
-                            <option value="" disabled>Chọn giới tính</option>
-                            <option value="Male" <?php echo ($user['sex'] == 'Male') ? 'selected' : ''; ?>>Nam</option>
-                            <option value="Female" <?php echo ($user['sex'] == 'Female') ? 'selected' : ''; ?>>Nữ</option>
-                            <option value="Other" <?php echo ($user['sex'] == 'Other') ? 'selected' : ''; ?>>Khác</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="address" class="form-label">Địa chỉ:</label>
-                        <textarea class="form-control" id="address" name="address"><?php echo $user['address']; ?></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="dateOfBirth" class="form-label">Ngày sinh:</label>
-                        <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" value="<?php echo $user['dateOfBirth']; ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="avatar" class="form-label">Image URL:</label>
-                        <input type="text" class="form-control" id="avatar" name="avatar" value="<?php echo $user['avatar']; ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="isbanned" class="form-label">Bị cấm:</label>
-                        <input type="hidden" name="isbanned" value="0">
-                        <input class="form-check-input mt-0" type="checkbox" name="isbanned" value="1" <?php echo ($user['isbanned'] == 1) ? 'checked' : '' ?>>                
-                    </div>
-                    <div class="mb-3">
-                        <label for="role" class="form-label">Vai trò:</label>
-                        <input type="text" class="form-control" value="<?php echo $user['role']; ?>" readonly disabled>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <input type="submit" class="form-control btn btn-primary" name="update_user" value="Lưu thay đổi">
+        <div class="col-xs-12 col-md-6 mt-3 px-5 ">
+            <div class="align-item:center">
+                <h2 class="mb-3">Thông tin người dùng</h2>
+                <!-- Display form --> 
+                <form class="mt-3" action="<?php echo $_SERVER['PHP_SELF'] . '?username=' . $username;?>" method="post">
+                    <div class="col-xs-12 col-md-9 col-xl-8">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Tên đăng nhập:</label>                            
+                            <input type="hidden" class="form-control" id="username" name="username" value="<?php echo $user['username'];?>">
+                            <input type="text" class="form-control" value="<?php echo $user['username'];?>" disabled>
+                        </div>    
+                        <div class="mb-3">
+                            <label for="fullname" class="form-label">Họ và tên:</label>
+                            <input type="text" class="form-control" id="fullname" name="fullname" value="<?php echo $user['fullname'];?>" >
                         </div>
-                        <div class="col-6">
-                            <input type="reset" class="form-control btn btn-danger" name="reset" value="Đặt lại">
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label">Số điện thoại:</label>
+                            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" value="<?php echo $user['phoneNumber'];?>" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" value="<?php echo $user['email'];?>" >
+                        </div>
+                        <div class="mb-3">
+                            <label for="sex" class="form-label">Giới tính:</label>
+                            <select class="form-select" id="sex" name="sex" required>
+                                <option value="" disabled>Chọn giới tính</option>
+                                <option value="Male" <?php echo ($user['sex'] == 'Male') ? 'selected' : ''; ?>>Nam</option>
+                                <option value="Female" <?php echo ($user['sex'] == 'Female') ? 'selected' : ''; ?>>Nữ</option>
+                                <option value="Other" <?php echo ($user['sex'] == 'Other') ? 'selected' : ''; ?>>Khác</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Địa chỉ:</label>
+                            <textarea class="form-control" id="address" name="address"><?php echo $user['address']; ?></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dateOfBirth" class="form-label">Ngày sinh:</label>
+                            <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" value="<?php echo $user['dateOfBirth']; ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="avatar" class="form-label">Image URL:</label>
+                            <input type="text" class="form-control" id="avatar" name="avatar" value="<?php echo $user['avatar']; ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="isbanned" class="form-label">Bị cấm:</label>
+                            <input type="hidden" name="isbanned" value="0">
+                            <input class="form-check-input mt-0" type="checkbox" name="isbanned" value="1" <?php echo ($user['isbanned'] == 1) ? 'checked' : '' ?>>                
+                        </div>
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Vai trò:</label>
+                            <input type="text" class="form-control" value="<?php echo $user['role']; ?>" readonly disabled>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="submit" class="form-control btn btn-primary" name="update_user" value="Lưu thay đổi">
+                            </div>
+                            <div class="col-6">
+                                <input type="reset" class="form-control btn btn-danger" name="reset" value="Đặt lại">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>        
         <?php
         } else {
@@ -129,7 +128,7 @@ if (isset($_GET['username'])) {
             <h2 class="mb-3">Lịch sử đơn hàng</h2>
             <?php
             if ($user_total_orders->num_rows > 0) {
-                echo '<table class="table table-bordered mt-3 table table-striped table-hover align-middle table-responsive w-auto" style="text-align:justify;">
+                echo '<table class="table table-bordered mt-3 table table-striped table-hover align-middle table-responsive w-auto">
                         <thead>
                             <tr>
                                 <th>Mã đơn hàng</th>

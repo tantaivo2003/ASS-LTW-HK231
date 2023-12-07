@@ -22,11 +22,13 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
         $address = $_POST["address"];
         $phone = $_POST["phone"];
 
-        if (empty($address) && $address != 0) {
+        if (empty($address) && $address != 0){
             echo '<script>alert("Nhập Address")</script>';
-        } else if (empty($phone) && $phone != 0) {
+        }
+        else if (empty($phone) && $phone != 0){
             echo '<script>alert("Nhập Phone")</script>';
-        } else {
+        }
+        else {
             $newsql = "UPDATE thongtin SET address='$address',phone='$phone'";
             if ($conn->query($newsql) === TRUE) {
                 echo '<script>alert("Đã chỉnh sửa thành công!")</script>';
@@ -56,29 +58,25 @@ if (isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Time Elite</title>
 </head>
 
-<body style="background-color:#eee;">
-    <div class="container mt-3" style="width: 600px; background-color:white;">
-        <a class="btn mt-3" href="admin_page.php" style="background-color:#FF8C00; color:white; margin-left: 20px;">Quay
-            lại</a>
-        <hr size="5px" color="#FF8C00">
-        <h1 class="mt-5" style="text-align: center;">THÔNG TIN LIÊN HỆ</h1>
+<body style="background-color:black;">
+    <div class="container mt-3" style="width: 600px">
+        <h1 class="mt-5" style="color: white; text-align: center;">THÔNG TIN LIÊN HỆ</h1>
         <hr>
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
-            <label for="address">Địa chỉ</label>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>">
+            <label for="address" style="color:white;">Địa chỉ</label>
             <input type="text" class="form-control mt-2" name="address" value='<?php echo $address ?>'>
-            <label class="mt-2" for="phone">Số điện thoại liên hệ</label>
+            <label class="mt-2" for="phone" style="color:white;">Số điện thoại liên hệ</label>
             <input type="text" class="form-control mt-2" name="phone" value='<?php echo $phone ?>'>
 
             <div class="row">
                 <div class="col">
-                    <input type="submit" class="form-control btn mt-3" name="submit" value="Xác nhận"
-                        style="background-color:#FF8C00; color:white;">
+                    <input type="submit" class="form-control btn mt-3" name="submit" value="Xác nhận" style="background-color:#FF8C00; color:white;">
                 </div>
                 <div class="col">
                     <input type="submit" class="form-control btn btn-danger mt-3" name="submit" value="Đặt lại">
                 </div>
             </div>
-            <a class="form-control btn btn-secondary mt-3 mb-3" href="admin_page.php">Hủy</a><br>
+            <a class="form-control btn btn-secondary mt-3" href="admin_page.php">Hủy</a><br>
 
         </form>
     </div>

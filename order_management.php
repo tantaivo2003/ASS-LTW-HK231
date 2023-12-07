@@ -13,7 +13,7 @@
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
-        echo '<table class="table table-bordered mt-3 table table-striped table-hover align-middle table-responsive w-auto mx-auto" style="text-align:justify;">
+        echo '<table class="table table-bordered mt-3 table table-striped table-hover align-middle table-responsive w-auto mx-auto">
                 <thead>
                     <tr>
                         <th>ID sản phẩm</th>
